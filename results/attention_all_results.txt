@@ -1,0 +1,35 @@
+Model Importance: 
+\begin{tabular}{lllrr}
+\toprule
+{} & corpus &   model &  mean\_correlation &  std\_correlation \\
+\midrule
+0 &   geco &    bert &          0.210542 &         0.308389 \\
+1 &   geco &  albert &          0.090925 &         0.356939 \\
+2 &   geco &  distil &          0.083935 &         0.325305 \\
+\bottomrule
+\end{tabular}
+
+
+Permutation Baselines: 
+\begin{tabular}{lllrr}
+\toprule
+{} & corpus &   model &  mean\_correlation &  std\_correlation \\
+\midrule
+0 &   geco &    bert &         -0.004375 &         0.033044 \\
+1 &   geco &  albert &          0.002235 &         0.035065 \\
+2 &   geco &  distil &         -0.002776 &         0.039209 \\
+\bottomrule
+\end{tabular}
+
+
+Len-Freq Baselines: 
+\begin{tabular}{lllllrr}
+\toprule
+{} & corpus &       type & mean\_correlation & std\_correlation &  mean correlation &  std correlation \\
+\midrule
+0 &   zuco &     length &              NaN &             NaN &          0.748224 &         0.192749 \\
+1 &   zuco &  frequency &              NaN &             NaN &         -0.522397 &         0.279737 \\
+2 &   geco &     length &              NaN &             NaN &          0.690720 &         0.304413 \\
+3 &   geco &  frequency &              NaN &             NaN &         -0.358574 &         0.436031 \\
+\bottomrule
+\end{tabular}

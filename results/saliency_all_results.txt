@@ -1,0 +1,36 @@
+Model Importance: 
+\begin{tabular}{lllllrr}
+\toprule
+{} & corpus &   model & mean\_correlation & std\_correlation &  mean correlation &  std correlation \\
+\midrule
+0 &   zuco &    bert &              NaN &             NaN &          0.685571 &         0.210135 \\
+1 &   zuco &  albert &              NaN &             NaN &          0.619250 &         0.226050 \\
+2 &   zuco &  distil &              NaN &             NaN &          0.652671 &         0.220041 \\
+3 &   geco &    bert &              NaN &             NaN &          0.535887 &         0.382798 \\
+4 &   geco &  albert &              NaN &             NaN &          0.480541 &         0.399078 \\
+5 &   geco &  distil &              NaN &             NaN &          0.506367 &         0.389296 \\
+\bottomrule
+\end{tabular}
+
+
+Permutation Baselines: 
+\begin{tabular}{lllll}
+\toprule
+Empty DataFrame
+Columns: Index(['corpus', 'model', 'mean\_correlation', 'std\_correlation'], dtype='object')
+Index: Index([], dtype='object') \\
+\bottomrule
+\end{tabular}
+
+
+Len-Freq Baselines: 
+\begin{tabular}{lllllrr}
+\toprule
+{} & corpus &       type & mean\_correlation & std\_correlation &  mean correlation &  std correlation \\
+\midrule
+0 &   zuco &     length &              NaN &             NaN &          0.748224 &         0.192749 \\
+1 &   zuco &  frequency &              NaN &             NaN &         -0.522397 &         0.279737 \\
+2 &   geco &     length &              NaN &             NaN &          0.690720 &         0.304413 \\
+3 &   geco &  frequency &              NaN &             NaN &         -0.358574 &         0.436031 \\
+\bottomrule
+\end{tabular}
