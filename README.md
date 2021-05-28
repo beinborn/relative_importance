@@ -1,4 +1,4 @@
-#Relative Importance in Sentence Processing
+# Relative Importance in Sentence Processing
 
 This project contains the code for the following paper: 
 Nora Hollenstein, Lisa Beinborn (2021):
