@@ -1,9 +1,6 @@
 import os
-import csv
-import h5py
 import pandas as pd
 import numpy as np
-import random
 
 # Extract relative fixation duration from the English part of the GECO corpus
 
@@ -11,7 +8,7 @@ def read_geco_file(filename):
     print("Reading file for GECO: ", filename)
 
     data = pd.read_excel(filename, usecols="A,E,F,I,J,K,BB", na_filter=False)
-    sentence_info = pd.read_excel("EnglishMaterial.xlsx", usecols="A,B,C,D", na_filter=False)
+    sentence_info = pd.read_csv("data/geco/EnglishMaterial_corrected.csv", na_filter=False)
     subjects = pd.unique(data['PP_NR'].values)
     sentences = pd.unique(sentence_info['SENTENCE_ID'].values)
 

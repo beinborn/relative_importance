@@ -1,0 +1,19 @@
+Model Importance: 
+\begin{tabular}{llllrr}
+\toprule
+{} & importance\_type & corpus &   model &  mean\_correlation &  std\_correlation \\
+\midrule
+0  &        saliency &   geco &    bert &          0.535573 &         0.383314 \\
+1  &        saliency &   geco &  albert &          0.480541 &         0.399078 \\
+2  &        saliency &   geco &  distil &          0.506107 &         0.389722 \\
+3  &       attention &   geco &    bert &          0.182515 &         0.438822 \\
+4  &       attention &   geco &  albert &          0.255502 &         0.440577 \\
+5  &       attention &   geco &  distil &          0.060038 &         0.449265 \\
+6  &        saliency &   zuco &    bert &          0.679702 &         0.206418 \\
+7  &        saliency &   zuco &  albert &          0.619250 &         0.226050 \\
+8  &        saliency &   zuco &  distil &          0.642896 &         0.220606 \\
+9  &       attention &   zuco &    bert &          0.114237 &         0.327751 \\
+10 &       attention &   zuco &  albert &          0.368909 &         0.277830 \\
+11 &       attention &   zuco &  distil &          0.029609 &         0.344526 \\
+\bottomrule
+\end{tabular}

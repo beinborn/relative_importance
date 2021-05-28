@@ -1,0 +1,35 @@
+Model Importance: 
+\begin{tabular}{llllll}
+\toprule
+Empty DataFrame
+Columns: Index(['importance\_type', 'corpus', 'model', 'mean\_correlation',
+       'std\_correlation'],
+      dtype='object')
+Index: Index([], dtype='object') \\
+\bottomrule
+\end{tabular}
+
+
+Permutation Baselines: 
+\begin{tabular}{llllll}
+\toprule
+Empty DataFrame
+Columns: Index(['importance\_type', 'corpus', 'model', 'mean\_correlation',
+       'std\_correlation'],
+      dtype='object')
+Index: Index([], dtype='object') \\
+\bottomrule
+\end{tabular}
+
+
+Len-Freq Baselines: 
+\begin{tabular}{lllrr}
+\toprule
+{} & corpus & baseline\_type &  mean\_correlation &  std\_correlation \\
+\midrule
+0 &   zuco &        length &          0.748224 &         0.192749 \\
+1 &   zuco &     frequency &         -0.522397 &         0.279737 \\
+2 &   geco &        length &          0.690720 &         0.304413 \\
+3 &   geco &     frequency &         -0.358574 &         0.436031 \\
+\bottomrule
+\end{tabular}
