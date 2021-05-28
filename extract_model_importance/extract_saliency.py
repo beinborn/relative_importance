@@ -24,7 +24,6 @@ def compute_sensitivity(model, embedding_matrix, tokenizer, text):
         # Get the actual token
         else:
             target_token = tokenizer.convert_ids_to_tokens(token_ids[masked_token_index])
-
             # integers are not differentable, so use a one-hot encoding of the intput
             token_ids_tensor = tf.constant([token_ids[0:masked_token_index] + [tokenizer.mask_token_id] + token_ids[masked_token_index + 1:]], dtype='int32')
             token_ids_tensor_one_hot = tf.one_hot(token_ids_tensor, vocab_size)
@@ -45,7 +44,7 @@ def compute_sensitivity(model, embedding_matrix, tokenizer, text):
             # compute the sensitivity and take l2 norm
             sensitivity_non_normalized = tf.norm(tape.gradient(predict_mask_correct_token, token_ids_tensor_one_hot), axis=2)
 
-            # Normalize by the maximum
+            # Normalize by the max
             sensitivity_tensor = (sensitivity_non_normalized / tf.reduce_max(sensitivity_non_normalized))
             sensitivity = sensitivity_tensor[0].numpy().tolist()
 
@@ -65,8 +64,8 @@ def extract_relative_saliency(model, embeddings,tokenizer, sentence):
 
     # Taking the softmax does not make a difference for calculating correlation
     # It can be useful to scale the salience signal to the same range as the human attention
-    relative_saliency = scipy.special.softmax(saliency)
-    return tokens, relative_saliency
+    # saliency = scipy.special.softmax(saliency)
+    return tokens, saliency
 
 
 

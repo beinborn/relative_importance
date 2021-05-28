@@ -1,7 +1,8 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
-# This is an example plot
+
+# This was just a test which we did not use in the end.
 
 sent = ["the",	"sort",	"of",	"movie",	"that",	"gives",	"tastelessness",	"a",	"bad",	"rap", "."]
 #means = [0.008473096	0.069485151	0.073877599	0.149800675	0.063240592	0.076925218	0.328517973	0.045003995	0.142686905	0.041988796]

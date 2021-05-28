@@ -5,6 +5,9 @@ import random
 
 
 # Here we calculate length, frequency, and permutation baselines on the sentence level
+# Note that the correlation functions yield a warning if one of the list is constant (stdev = 0)
+# For example, the phrase "you did not" would yield the length vector [3,3,3]
+# and then correlation cannot be calculated
 def calculate_len_baseline(tokens, importance):
     spearman = []
     kendall = []
@@ -12,7 +15,8 @@ def calculate_len_baseline(tokens, importance):
 
     for i, sent in enumerate(tokens):
         lengths = [len(token) for token in sent]
-        if(np.std(np.array(lengths))>0):
+
+        if len(lengths) > 1:
             mi_scores.append(sklearn.metrics.mutual_info_score(lengths, importance[i]))
             spearman.append(scipy.stats.spearmanr(lengths, importance[i])[0])
             kendall.append(scipy.stats.kendalltau(lengths, importance[i])[0])
@@ -34,10 +38,12 @@ def calculate_freq_baseline(frequencies, importance):
     spearman = []
     kendall = []
     mi_scores = []
+
     for i in range(len(frequencies)):
-        mi_scores.append(sklearn.metrics.mutual_info_score(frequencies[i], importance[i]))
-        spearman.append(scipy.stats.spearmanr(frequencies[i], importance[i])[0])
-        kendall.append(scipy.stats.kendalltau(frequencies[i], importance[i])[0])
+        if len(frequencies[i])>0:
+            mi_scores.append(sklearn.metrics.mutual_info_score(frequencies[i], importance[i]))
+            spearman.append(scipy.stats.spearmanr(frequencies[i], importance[i])[0])
+            kendall.append(scipy.stats.kendalltau(frequencies[i], importance[i])[0])
 
     spearman_mean = np.nanmean(np.asarray(spearman))
     spearman_std = np.nanstd(np.asarray(spearman))
@@ -59,14 +65,16 @@ def calculate_permutation_baseline(human_importance, model_importance, num_permu
             pass
             #  print("Alignment Error: " + str(i))
         else:
-            random_correlations = []
-            for k in range(num_permutations):
-                shuffled_importance = random.sample(list(model_importance[i]), len(model_importance[i]))
-                spearman = scipy.stats.spearmanr(shuffled_importance, human_importance[i])[0]
-                random_correlations.append(spearman)
-            # TODO: This throws a warning due to sentences with length 1, test for this
-            all_random_correlations.append(np.nanmean(np.asarray(random_correlations)))
-    print(all_random_correlations)
+            # Ignore sentences of length 1
+            if len(human_importance[i])>1:
+                random_correlations = []
+                for k in range(num_permutations):
+                    shuffled_importance = random.sample(list(model_importance[i]), len(model_importance[i]))
+                    spearman = scipy.stats.spearmanr(shuffled_importance, human_importance[i])[0]
+                    random_correlations.append(spearman)
+                mean_sentence = np.nanmean(np.asarray(random_correlations))
+                all_random_correlations.append(mean_sentence)
+
     spearman_mean = np.nanmean(np.asarray(all_random_correlations))
     spearman_std = np.nanstd(np.asarray(all_random_correlations))
     print("---------------")

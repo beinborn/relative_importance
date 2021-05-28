@@ -39,11 +39,12 @@ def extract_all_human_importance(corpus):
 
 
 corpora = ["geco", "zuco"]
-models = ["bert","distil", "albert"]
+models = ["bert", "distil", "albert"]
+
 
 for corpus in corpora:
     # We skip extraction of human importance here because it takes quite long.
-    # extract_all_human_importance(corpus)
+    #extract_all_human_importance(corpus)
     with open("results/" + corpus + "_sentences.txt", "r") as f:
         sentences = f.read().splitlines()
     print("Processing Corpus: " + corpus)
@@ -69,8 +70,9 @@ for corpus in corpora:
 
         outfile = "results/" + corpus + "_" + modelname + "_"
 
-        print("Extracting attention for " + modelname)
-        extract_all_attention(model, tokenizer, sentences, outfile+ "attention.txt")
+        # print("Extracting attention for " + modelname)
+        # extract_all_attention(model, tokenizer, sentences, outfile+ "attention.txt")
 
+        # Note: Saliency calculation takes much longer than attention calculation.
         print("Extracting saliency for " + modelname)
         extract_all_saliency(model,  embeddings, tokenizer, sentences, outfile + "saliency.txt")

@@ -16,8 +16,10 @@ def get_attention_for_sentence(model, tokenizer, sentence):
 
 # For the attention baseline, we fixed several experimental choices (see below) which might affect the results.
 def calculate_relative_attention( tokens, attention):
-    # We use the last layer as Sood and the first element of the batch because batch size is 1
+    # We use the last layer as Sood et al. 2020
     layer = len(attention)-1
+
+    # We use the first element of the batch because batch size is 1
     attention = attention[layer][0]
     
     # 1. We take the mean over the 12 attention heads (like Abnar & Zuidema 2020)
@@ -34,10 +36,11 @@ def calculate_relative_attention( tokens, attention):
     # 2. For each word, we sum over the attention to the other words to determine relative importance
     sum_attention = np.sum(mean_attention, axis=0)
 
-    # 3. Apply the softmax to get relative attention
+    # Taking the softmax does not make a difference for calculating correlation
+    # It can be useful to scale the salience signal to the same range as the human attention
     relative_attention = scipy.special.softmax(sum_attention)
 
-    return tokens[1:-1], relative_attention
+    return tokens, relative_attention
 
 def extract_attention(model, tokenizer, sentence):
 
