@@ -17,15 +17,15 @@ If you want to run the code for another model, you need to modify extract_all.py
 You can also add another eye-tracking dataset there but you would need to implement a new data_extractor. Note that aligning the tokenization of eye-tracking corpora with the language model tokenizers can be tricky. 
 
 ### 3. Folder structure
-**extract_human_fixations**: code to extract the relative fixation duration from two eye-tracking corpora and average it over all subjects. The two corpora are [GECO](https://expsy.ugent.be/downloads/geco/) and [ZUCO](https://osf.io/q3zws/). 
+- **extract_human_fixations**: code to extract the relative fixation duration from two eye-tracking corpora and average it over all subjects. The two corpora are [GECO](https://expsy.ugent.be/downloads/geco/) and [ZUCO](https://osf.io/q3zws/). 
 
-**extract_model_importance**: code to extract saliency-based and attention-based importance from transformer-based language models. 
+- **extract_model_importance**: code to extract saliency-based and attention-based importance from transformer-based language models. 
 
-**analyis**: code to compare and analyze patterns of importance in the human fixation durations and the model data. Also contains code to replicate the plots in the paper. 
+- **analyis**: code to compare and analyze patterns of importance in the human fixation durations and the model data. Also contains code to replicate the plots in the paper. 
 
-**plots**: contains all plots.
+- **plots**: contains all plots.
 
-**results**: contains intermediate results. 
+- **results**: contains intermediate results. 
 
 ### 4. Requirements
 We use the following packages (see requirements.txt): 
