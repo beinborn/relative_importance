@@ -8,7 +8,7 @@ Relative Importance for Sentence Processing <br>
 TODO: add link to paper  
 
 ### 1. Re-run experiments
-In order to re-run our analyses, simply run **analyse_all.py.** Note that some calculations might take a little. Feel free to comment them out.  
+In order to re-run our analyses, simply run **analyze_all.py.** Note that some calculations might take a little. Feel free to comment them out.  
 
 If you want to reproduce the data extraction, run **extract_all.py**. Note that this takes quite long. You need to make sure that you have downloaded the eye-tracking corpora (see extract_human_fixations/README.md for details). 
 
@@ -21,15 +21,18 @@ You can also add another eye-tracking dataset there but you would need to implem
 
 - **extract_model_importance**: code to extract saliency-based and attention-based importance from transformer-based language models. 
 
-- **analyis**: code to compare and analyze patterns of importance in the human fixation durations and the model data. Also contains code to replicate the plots in the paper. 
+- **analysis**: code to compare and analyze patterns of importance in the human fixation durations and the model data. Also contains code to replicate the plots in the paper. 
 
 - **plots**: contains all plots.
 
 - **results**: contains intermediate results. 
 
 ### 4. Requirements
+
+Python should be <= 3.8.
+
 We use the following packages (see requirements.txt): 
-numpy (1.19.5), tensorflow (2.4.1), transformers (4.2.2), scikit-learn (0.22.2.post1), spacy (2.3.5), wordfreq (2.3.2), scipy (1.4.1)
+numpy (1.19.5), tensorflow (2.4.1), transformers (4.2.2), scikit-learn (0.22.2), spacy (2.3.5), wordfreq (2.3.2), scipy (1.4.1)
 
 Note that later versions of transformers might lead to errors. 
 
