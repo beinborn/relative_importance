@@ -2,10 +2,9 @@
 
 This project contains the code for the following paper: <br>
 Nora Hollenstein, Lisa Beinborn (2021): <br>
-Relative Importance for Sentence Processing <br>
+[Relative Importance for Sentence Processing](https://arxiv.org/abs/2106.03471) <br>
 *to appear in the proceedings of ACL 2021* <br>
 
-TODO: add link to paper  
 
 ### 1. Re-run experiments
 In order to re-run our analyses, simply run `python analyze_all.py`. Note that some calculations might take a little. Feel free to comment them out.  
