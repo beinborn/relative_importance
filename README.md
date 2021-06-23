@@ -1,13 +1,13 @@
 # Relative Importance in Sentence Processing
 
-This project contains the code for the following paper: <br>
+This project contains code for the following paper: <br><br>
 Nora Hollenstein, Lisa Beinborn (2021): <br>
 [Relative Importance for Sentence Processing](https://arxiv.org/abs/2106.03471) <br>
 *to appear in the proceedings of ACL 2021* <br>
 
 
 ### 1. Re-run experiments
-In order to re-run our analyses, simply run `python analyze_all.py`. Note that some calculations might take a little. Feel free to comment them out.  
+In order to re-run our analyses, simply run `python analyze_all.py`. Some calculations take a bit more time. Feel free to comment them out.  
 
 If you want to reproduce the data extraction, run `python extract_all.py`. Note that this takes quite long. You need to make sure that you have downloaded the eye-tracking corpora (see extract_human_fixations/README.md for details). 
 
