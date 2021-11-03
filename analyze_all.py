@@ -93,8 +93,14 @@ def compare_importance(et_tokens, human_salience, lm_tokens, lm_salience, import
     return mean_spearman, std_spearman
 
 
-corpora = [ "geco", "zuco"]
-models = ["bert", "albert", "distil"]
+corpora_modelpaths = {
+    'geco': ['bert-base-uncased', 'distilbert-base-uncased', 'albert-base-v2'],
+    'zuco': ['bert-base-uncased', 'distilbert-base-uncased', 'albert-base-v2'],
+    'potsdam': [
+        'dbmdz/bert-base-german-uncased',
+        'distilbert-base-german-cased'
+    ]
+}
 types = ["saliency", "attention"]
 
 
@@ -103,24 +109,26 @@ baseline_results = pd.DataFrame(columns=('corpus', 'baseline_type', 'mean_correl
 results = pd.DataFrame(columns=('importance_type', 'corpus', 'model', 'mean_correlation', 'std_correlation'))
 permutation_results = pd.DataFrame(
     columns=('importance_type', 'corpus', 'model', 'mean_correlation', 'std_correlation'))
-for corpus in corpora:
+
+for corpus, modelpaths in corpora_modelpaths.items():
     print(corpus)
     et_tokens, human_importance = extract_human_importance(corpus)
 
     for importance_type in types:
         print(importance_type)
 
-        for model in models:
-            lm_tokens, lm_importance = extract_model_importance(corpus, model, importance_type)
+        for mp in modelpaths:
+            modelname = mp.split("/")[1]
+            lm_tokens, lm_importance = extract_model_importance(corpus, modelname, importance_type)
 
             # Model Correlation
             spearman_mean, spearman_std = compare_importance(et_tokens, human_importance, lm_tokens, lm_importance, importance_type)
-            results = results.append( {'importance_type': importance_type, 'corpus': corpus, 'model': model, 'mean_correlation': spearman_mean, 'std_correlation': spearman_std}, ignore_index=True)
+            results = results.append( {'importance_type': importance_type, 'corpus': corpus, 'model': modelname, 'mean_correlation': spearman_mean, 'std_correlation': spearman_std}, ignore_index=True)
 
             #Permutation Baseline
             spearman_mean, spearman_std = calculate_permutation_baseline(human_importance, lm_importance)
             permutation_results = permutation_results.append(
-                {'importance_type': importance_type, 'corpus': corpus, 'model': model, 'mean_correlation': spearman_mean, 'std_correlation': spearman_std},
+                {'importance_type': importance_type, 'corpus': corpus, 'model': mp, 'mean_correlation': spearman_mean, 'std_correlation': spearman_std},
                 ignore_index=True)
 
 
