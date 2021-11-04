@@ -1,3 +1,4 @@
+import time
 import scipy.stats
 import sklearn.metrics
 from ast import literal_eval
@@ -133,7 +134,8 @@ for corpus, modelpaths in corpora_modelpaths.items():
 
 
     # Store results
-    with open("results/all_results.txt", "w") as outfile:
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    with open("results/all_results-" + timestr + ".txt", "w") as outfile:
         outfile.write("Model Importance: \n")
         outfile.write(results.to_latex())
 
