@@ -55,7 +55,7 @@ for corpus, modelpaths in corpora_modelpaths.items():
     print("Processing Corpus: " + corpus)
 
     for mp in modelpaths:
-        modelname = mp.split("/")[1]
+        modelname = mp.split("/")[-1]
         # TODO: this could be moved to a config file
         if modelname.startswith("bert"):
             model = TFBertForMaskedLM.from_pretrained(mp, output_attentions=True)
@@ -65,8 +65,9 @@ for corpus, modelpaths in corpora_modelpaths.items():
             model = TFAlbertForMaskedLM.from_pretrained(mp, output_attentions=True)
             tokenizer = AlbertTokenizer.from_pretrained(mp)
             embeddings = model.albert.embeddings.word_embeddings
-        if modelname == "distil":
-            model = TFDistilBertForMaskedLM.from_pretrained(mp, output_attentions=True)
+        if modelname.startswith("distil"):
+            from_pt = modelname == 'distilbert-base-german-cased'
+            model = TFDistilBertForMaskedLM.from_pretrained(mp, output_attentions=True, from_pt=from_pt)
             tokenizer = DistilBertTokenizer.from_pretrained(mp)
             embeddings = model.distilbert.embeddings.word_embeddings
 

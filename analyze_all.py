@@ -1,3 +1,4 @@
+import os.path
 import time
 import scipy.stats
 import sklearn.metrics
@@ -27,7 +28,11 @@ def extract_human_importance(dataset):
 def extract_model_importance(dataset, model, importance_type):
     lm_tokens = []
     lm_salience = []
-    with open("results/" + dataset + "_" + model + "_" + importance_type + ".txt", "r") as f:
+    fname = "results/" + dataset + "_" + model + "_" + importance_type + ".txt"
+    if not os.path.isfile(fname):
+        error_message = fname + " does not exist. Have you run extract_all.py?"
+        raise FileNotFoundError(error_message)
+    with open(fname, "r") as f:
         for line in f.read().splitlines():
             tokens, heat = line.split("\t")
 
@@ -51,12 +56,12 @@ def compare_importance(et_tokens, human_salience, lm_tokens, lm_salience, import
     spearman_correlations = []
     kendall_correlations = []
     mutual_information = []
-    with open("results/correlations/" + corpus + "_" + model + "_" + importance_type + "_correlations.txt", "w") as outfile:
+    with open("results/correlations/" + corpus + "_" + modelname + "_" + importance_type + "_correlations.txt", "w") as outfile:
         outfile.write("Spearman\tKendall\tMutualInformation\n")
         for i, sentence in enumerate(et_tokens):
             if len(et_tokens[i]) < len(lm_tokens[i]):
                 # TODO: some merge operations are already performed when extracting saliency. Would be better to have them all in one place.
-                if model == "albert":
+                if modelname.startswith("albert"):
                     lm_tokens[i], lm_salience[i] = merge_albert_tokens(lm_tokens[i], lm_salience[i])
                     lm_tokens[i], lm_salience[i] = merge_hyphens(lm_tokens[i], lm_salience[i])
 
@@ -82,7 +87,7 @@ def compare_importance(et_tokens, human_salience, lm_tokens, lm_salience, import
                 count_tok_errors += 1
 
 
-    print(corpus, model)
+    print(corpus, modelname)
     print("Token alignment errors: ", count_tok_errors)
     print("Spearman Correlation Model: Mean, Stdev")
     mean_spearman = np.nanmean(np.asarray(spearman_correlations))
@@ -119,7 +124,7 @@ for corpus, modelpaths in corpora_modelpaths.items():
         print(importance_type)
 
         for mp in modelpaths:
-            modelname = mp.split("/")[1]
+            modelname = mp.split("/")[-1]
             lm_tokens, lm_importance = extract_model_importance(corpus, modelname, importance_type)
 
             # Model Correlation
