@@ -38,34 +38,37 @@ def extract_all_human_importance(corpus):
         data_extractor_zuco
 
 
-corpora = ["geco", "zuco"]
-models = ["bert", "distil", "albert"]
+corpora_modelpaths = {
+    'geco': ['bert-base-uncased', 'distilbert-base-uncased', 'albert-base-v2'],
+    'zuco': ['bert-base-uncased', 'distilbert-base-uncased', 'albert-base-v2'],
+    'potsdam': [
+        'dbmdz/bert-base-german-uncased',
+        'distilbert-base-german-cased'
+    ]
+}
 
-
-for corpus in corpora:
+for corpus, modelpaths in corpora_modelpaths.items():
     # We skip extraction of human importance here because it takes quite long.
     #extract_all_human_importance(corpus)
     with open("results/" + corpus + "_sentences.txt", "r") as f:
         sentences = f.read().splitlines()
     print("Processing Corpus: " + corpus)
 
-    for modelname in models:
+    for mp in modelpaths:
+        modelname = mp.split("/")[-1]
         # TODO: this could be moved to a config file
-        if modelname == "bert":
-            MODEL_NAME = 'bert-base-uncased'
-            model = TFBertForMaskedLM.from_pretrained(MODEL_NAME, output_attentions=True)
-            tokenizer = BertTokenizer.from_pretrained(MODEL_NAME)
+        if modelname.startswith("bert"):
+            model = TFBertForMaskedLM.from_pretrained(mp, output_attentions=True)
+            tokenizer = BertTokenizer.from_pretrained(mp)
             embeddings = model.bert.embeddings.word_embeddings
-        if modelname == "albert":
-            MODEL_NAME = 'albert-base-v2'
-            model = TFAlbertForMaskedLM.from_pretrained(MODEL_NAME, output_attentions=True)
-            tokenizer = AlbertTokenizer.from_pretrained(MODEL_NAME)
+        if modelname.startswith("albert"):
+            model = TFAlbertForMaskedLM.from_pretrained(mp, output_attentions=True)
+            tokenizer = AlbertTokenizer.from_pretrained(mp)
             embeddings = model.albert.embeddings.word_embeddings
-
-        if modelname == "distil":
-            MODEL_NAME = 'distilbert-base-uncased'
-            model = TFDistilBertForMaskedLM.from_pretrained(MODEL_NAME, output_attentions=True)
-            tokenizer = DistilBertTokenizer.from_pretrained(MODEL_NAME)
+        if modelname.startswith("distil"):
+            from_pt = modelname == 'distilbert-base-german-cased'
+            model = TFDistilBertForMaskedLM.from_pretrained(mp, output_attentions=True, from_pt=from_pt)
+            tokenizer = DistilBertTokenizer.from_pretrained(mp)
             embeddings = model.distilbert.embeddings.word_embeddings
 
         outfile = "results/" + corpus + "_" + modelname + "_"

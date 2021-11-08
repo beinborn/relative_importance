@@ -1,3 +1,5 @@
+import os.path
+import time
 import scipy.stats
 import sklearn.metrics
 from ast import literal_eval
@@ -26,7 +28,11 @@ def extract_human_importance(dataset):
 def extract_model_importance(dataset, model, importance_type):
     lm_tokens = []
     lm_salience = []
-    with open("results/" + dataset + "_" + model + "_" + importance_type + ".txt", "r") as f:
+    fname = "results/" + dataset + "_" + model + "_" + importance_type + ".txt"
+    if not os.path.isfile(fname):
+        error_message = fname + " does not exist. Have you run extract_all.py?"
+        raise FileNotFoundError(error_message)
+    with open(fname, "r") as f:
         for line in f.read().splitlines():
             tokens, heat = line.split("\t")
 
@@ -50,12 +56,12 @@ def compare_importance(et_tokens, human_salience, lm_tokens, lm_salience, import
     spearman_correlations = []
     kendall_correlations = []
     mutual_information = []
-    with open("results/correlations/" + corpus + "_" + model + "_" + importance_type + "_correlations.txt", "w") as outfile:
+    with open("results/correlations/" + corpus + "_" + modelname + "_" + importance_type + "_correlations.txt", "w") as outfile:
         outfile.write("Spearman\tKendall\tMutualInformation\n")
         for i, sentence in enumerate(et_tokens):
             if len(et_tokens[i]) < len(lm_tokens[i]):
                 # TODO: some merge operations are already performed when extracting saliency. Would be better to have them all in one place.
-                if model == "albert":
+                if modelname.startswith("albert"):
                     lm_tokens[i], lm_salience[i] = merge_albert_tokens(lm_tokens[i], lm_salience[i])
                     lm_tokens[i], lm_salience[i] = merge_hyphens(lm_tokens[i], lm_salience[i])
 
@@ -81,7 +87,7 @@ def compare_importance(et_tokens, human_salience, lm_tokens, lm_salience, import
                 count_tok_errors += 1
 
 
-    print(corpus, model)
+    print(corpus, modelname)
     print("Token alignment errors: ", count_tok_errors)
     print("Spearman Correlation Model: Mean, Stdev")
     mean_spearman = np.nanmean(np.asarray(spearman_correlations))
@@ -93,8 +99,14 @@ def compare_importance(et_tokens, human_salience, lm_tokens, lm_salience, import
     return mean_spearman, std_spearman
 
 
-corpora = [ "geco", "zuco"]
-models = ["bert", "albert", "distil"]
+corpora_modelpaths = {
+    'geco': ['bert-base-uncased', 'distilbert-base-uncased', 'albert-base-v2'],
+    'zuco': ['bert-base-uncased', 'distilbert-base-uncased', 'albert-base-v2'],
+    'potsdam': [
+        'dbmdz/bert-base-german-uncased',
+        'distilbert-base-german-cased'
+    ]
+}
 types = ["saliency", "attention"]
 
 
@@ -103,29 +115,32 @@ baseline_results = pd.DataFrame(columns=('corpus', 'baseline_type', 'mean_correl
 results = pd.DataFrame(columns=('importance_type', 'corpus', 'model', 'mean_correlation', 'std_correlation'))
 permutation_results = pd.DataFrame(
     columns=('importance_type', 'corpus', 'model', 'mean_correlation', 'std_correlation'))
-for corpus in corpora:
+
+for corpus, modelpaths in corpora_modelpaths.items():
     print(corpus)
     et_tokens, human_importance = extract_human_importance(corpus)
 
     for importance_type in types:
         print(importance_type)
 
-        for model in models:
-            lm_tokens, lm_importance = extract_model_importance(corpus, model, importance_type)
+        for mp in modelpaths:
+            modelname = mp.split("/")[-1]
+            lm_tokens, lm_importance = extract_model_importance(corpus, modelname, importance_type)
 
             # Model Correlation
             spearman_mean, spearman_std = compare_importance(et_tokens, human_importance, lm_tokens, lm_importance, importance_type)
-            results = results.append( {'importance_type': importance_type, 'corpus': corpus, 'model': model, 'mean_correlation': spearman_mean, 'std_correlation': spearman_std}, ignore_index=True)
+            results = results.append( {'importance_type': importance_type, 'corpus': corpus, 'model': modelname, 'mean_correlation': spearman_mean, 'std_correlation': spearman_std}, ignore_index=True)
 
             #Permutation Baseline
             spearman_mean, spearman_std = calculate_permutation_baseline(human_importance, lm_importance)
             permutation_results = permutation_results.append(
-                {'importance_type': importance_type, 'corpus': corpus, 'model': model, 'mean_correlation': spearman_mean, 'std_correlation': spearman_std},
+                {'importance_type': importance_type, 'corpus': corpus, 'model': mp, 'mean_correlation': spearman_mean, 'std_correlation': spearman_std},
                 ignore_index=True)
 
 
     # Store results
-    with open("results/all_results.txt", "w") as outfile:
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    with open("results/all_results-" + timestr + ".txt", "w") as outfile:
         outfile.write("Model Importance: \n")
         outfile.write(results.to_latex())
 
