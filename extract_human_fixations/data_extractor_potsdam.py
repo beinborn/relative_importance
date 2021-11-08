@@ -132,8 +132,8 @@ class PotsdamDataNormalizer:
                 words = self.frags_words[frag]
                 for word_idx, zipped in enumerate(zip(normalized_tfd, words)):
                     word_row = flt_file.iloc[word_idx]
-                    sentence_idx = word_row['WordIndexInSentence']
-                    word_idx = word_row['SentenceIndex']
+                    sentence_idx = word_row['SentenceIndex']
+                    word_idx = word_row['WordIndexInSentence']
                     trt = word_row['FPRT'] + word_row['RRT']
                     relfix, word = zipped
                     row = [sentence_idx, word_idx, word, trt, relfix]
