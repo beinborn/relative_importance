@@ -124,20 +124,26 @@ class PotsdamDataNormalizer:
 
         for subj in self.subjs:
             csv_data = []
-            for frag in self.frags:
+            for idx, frag in enumerate(self.frags):
                 flt_file = pd.read_csv(self.files[frag][subj][0], sep="\t", header=0)
                 tfd = flt_file["TFT"].tolist()
-
-                normalized_tfd =  [float(item)/sum(tfd) for item in tfd]
                 words = self.frags_words[frag]
-                for word_idx, zipped in enumerate(zip(normalized_tfd, words)):
+
+                max_sent = flt_file['SentenceIndex'].max()
+                for word_idx in range(len(words)):
                     word_row = flt_file.iloc[word_idx]
-                    sentence_idx = word_row['SentenceIndex']
+                    word = word_row['WORD']
+                    sentence_idx = word_row['SentenceIndex'] + (idx * max_sent)
+
                     word_idx = word_row['WordIndexInSentence']
                     trt = word_row['FPRT'] + word_row['RRT']
-                    relfix, word = zipped
-                    row = [sentence_idx, word_idx, word, trt, relfix]
+                    tft = word_row['TFT']
+                    tft_sum = flt_file[flt_file['SentenceIndex'] == sentence_idx]['TFT'].sum()
+                    rel_tft = tft / tft_sum
+
+                    row = [sentence_idx, word_idx, word, trt, rel_tft]
                     csv_data.append(row)
+
             Path("potsdam").mkdir(parents=True, exist_ok=True)
             output_df = pd.DataFrame(data=csv_data, columns=['sentence_id', 'word_id', 'word', 'TRT', 'relFix'])
             output_df.to_csv(self.task+'/'+subj+'-relfix-feats.csv')
@@ -173,7 +179,6 @@ def extract_features(dirs):
         if len(features[0]) > 1:
             averaged_dict[sent] = [features[0], avg_rel_fix]
     print(len(averaged_dict), " total sentences.")
-
     out_file_text = open("results/potsdam_sentences.txt", "w")
     out_file_relFix = open("results/potsdam_relfix_averages.txt", "w")
     for sent, feat in averaged_dict.items():
