@@ -79,12 +79,12 @@ class PotsdamDataNormalizer:
 
     def read_files(self):
         LOGGER.info(f"Reading files for task {self.task}")
-        for file in sorted(os.listdir(self.dir)):
+        for file in sorted(os.listdir(self.dir + "raw")):
             if not file.endswith(".txt"):
                 continue
             frag = file.split("_")[1]
             subj = file.split("_")[0]
-            fpath = os.path.join(self.dir, file)
+            fpath = os.path.join(self.dir + "raw", file)
             self.add_file(fpath, frag, subj)
 
     def add_file(self, fpath, frag, subj):
@@ -144,9 +144,9 @@ class PotsdamDataNormalizer:
                     row = [sentence_idx, word_idx, word, trt, rel_tft]
                     csv_data.append(row)
 
-            Path("potsdam").mkdir(parents=True, exist_ok=True)
+            Path(self.dir+"relfix").mkdir(parents=True, exist_ok=True)
             output_df = pd.DataFrame(data=csv_data, columns=['sentence_id', 'word_id', 'word', 'TRT', 'relFix'])
-            output_df.to_csv(self.task+'/'+subj+'-relfix-feats.csv')
+            output_df.to_csv(self.dir+"relfix/"+subj+'-relfix-feats.csv')
 
 
 def extract_features(dirs):
