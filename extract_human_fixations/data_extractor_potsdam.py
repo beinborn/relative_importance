@@ -173,7 +173,6 @@ def extract_features(dirs):
                     else:
                         sent_dict[" ".join(map(str, list(sent_data['word'])))][1].append(relfix_vals)
                 i += 1
-
     # average feature values for all subjects
     averaged_dict = {}
     for sent, features in sent_dict.items():
@@ -196,4 +195,4 @@ if __name__ == "__main__":
     normalizer.read_subjs()
     normalizer.read_words()
     normalizer.calc_features()
-    extract_features(['potsdam/'])
+    extract_features(['extract_human_fixations/data/potsdam/relfix/'])
