@@ -124,6 +124,7 @@ class PotsdamDataNormalizer:
 
         for subj in self.subjs:
             csv_data = []
+            sentence_idx_counter = 0
             for idx, frag in enumerate(self.frags):
                 flt_file = pd.read_csv(self.files[frag][subj][0], sep="\t", header=0)
                 tfd = flt_file["TFT"].tolist()
@@ -133,16 +134,17 @@ class PotsdamDataNormalizer:
                 for word_idx in range(len(words)):
                     word_row = flt_file.iloc[word_idx]
                     word = word_row['WORD']
-                    sentence_idx = word_row['SentenceIndex'] + (idx * max_sent)
-
+                    sentence_idx = word_row['SentenceIndex']
+                    all_sentence_idx = sentence_idx_counter + sentence_idx
                     word_idx = word_row['WordIndexInSentence']
                     trt = word_row['FPRT'] + word_row['RRT']
                     tft = word_row['TFT']
                     tft_sum = flt_file[flt_file['SentenceIndex'] == sentence_idx]['TFT'].sum()
                     rel_tft = tft / tft_sum
-
-                    row = [sentence_idx, word_idx, word, trt, rel_tft]
+                    row = [all_sentence_idx, word_idx, word, trt, rel_tft]
                     csv_data.append(row)
+
+                sentence_idx_counter += max_sent
 
             Path(self.dir+"relfix").mkdir(parents=True, exist_ok=True)
             output_df = pd.DataFrame(data=csv_data, columns=['sentence_id', 'word_id', 'word', 'TRT', 'relFix'])
