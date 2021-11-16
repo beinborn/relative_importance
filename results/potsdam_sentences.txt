@@ -28,34 +28,68 @@ Stark transpirierende Pflanzen können Nitrat schneller zur Wurzeloberfläche tr
 Andere essenzielle Mineralstoffe wie Phosphat sind jedoch fest im Boden gebunden sie haben niedrige Diffusionskoeffizienten
 Die Phosphatverarmungszonen von zwei Wurzeln die sehr nah beieinander sind überlappen sich kaum und ein reich verzweigtes Wurzelsystem erhöht die Phosphataufnahme bei knapper Phosphatversorgung daher enorm
 Ein extensiv ausgebildetes Wurzelsystem mit größeren Zwischenräumen dagegen kann die Nitrataufnahme maximieren
-Motormoleküle sind Enzyme welche die Energie aus der Hydrolyse von ATP in mechanische Energie umwandeln Ein Zyklotron besteht aus einer flachen zylindrischen Vakuumkammer zwischen den Polen eines Elektromagneten der ein Feld in z-Richtung erzeugt
-Dabei induzieren sie eine Konformationsänderung die einen Transport auf den Gleisen ermöglicht Die Kammer ist in zwei D-förmige Hälften aufgeteilt zwischen denen eine Hochfrequenzspannung anliegt
-Die Gleise können Mikrotubuli oder Aktinfilamente sein Die von der Ionenquelle im Spalt zwischen den Kammern im Zentrum der Anordnung emittierten positiven Ionen werden auf die negative Kammerhälfte zu beschleunigt
-Aktinbindende Motorproteine sind die Myosine von denen in Eukaryoten siebzehn Familien vorkommen Da im Inneren der Kammerhälften mit metallischen Wänden kein elektrisches Feld existiert beschreiben die Ionen hier im Magnetfeld einen Halbkreis in der x-y-Ebene dessen Radius durch die als Zentripetalkraft wirkende Lorentzkraft festgelegt und dessen Umlaufszeit unabhängig vom Radius ist
-Eine schwere Kette ist an der Ausbildung einer Schwanz- und einer Kopfregion beteiligt welche die Motordomäne bildet Eine chlorophyllhaltige Parenchymzelle in einem Angiospermenblatt exportiert organisches Material in Form von Saccharose aus der Zelle und versorgt damit selbst in der Nacht alle chlorophyllfreien Zellen der Pflanze Wird die Hochfrequenz nun genau so gewählt dass die Ionen nach Durchlaufen des Halbkreises immer zu einem Zeitpunkt wieder am Spalt ankommen bei dem die richtige Polarität der Beschleunigungsspannung anliegt nimmt ihre kinetische Energie bei Durchlaufen des Spaltes zu ihre Geschwindigkeit wächst und daher auch der Radius des nächsten Halbkreises
-Der Kopf besitzt eine Aktin- und eine ATP-Bindungsstelle Das Prinzip ist einfach Die Ionen durchlaufen deshalb eine spiralartige Bahn die aus lauter Halbkreisen mit wachsenden Radien besteht bis sie den Rand des Magnetfeldes erreicht haben und dort durch ein elektrisches Ablenkfeld extrahiert werden können
-Im Übergangsbereich von Kopf zu Schwanz können unterschiedliche leichte Ketten binden und auf diese Weise an der Regulation von Myosin mitwirken Am Tag speichert der Chloroplast die gebildete und überschüssige Glucose aus der Photosynthese als Stärke
-In den nicht muskulären Zellen beispielsweise registriert eine Calmodulinkette die Anwesenheit von Calciumionen und ermöglicht die Bindung von Myosin an Aktin in der Nacht kommt es zu einer Stoffentnahme aus diesem Speicher
-Je nach Klasse kann der Schwanz an Vesikel anlagern um sie entlang des Aktinfilaments zu ziehen Die Zelle kann auf diese Weise Tag und Nacht einen Export gewährleisten
-Alle Myosine bis auf Myosin VI bewegen sich zum +Ende des Aktinfilaments Saccharose ist ein Dimer und wirkt nicht reduzierend sie wird in der Pflanze vor allem als leicht verfügbarer Speicherstoff verwendet Ein Prion ist ein infektiöses Protein das von einem endogenen zellulären Protein abstammt und dessen Primärstruktur besitzt sich aber in Sekundär- Tertiär- und Quartärstrukturen von diesem unterscheidet
-Myosin II ist ein Dimer es hat zwei Köpfe und kann mit seinem Schwanz an ein bipolares Filament binden Stärke ist ein großes Polymer aus Glucose wirkt ebenfalls nicht reduzierend und ist hauptsächlich in Speicherorganen zu finden Seine strukturellen Eigenschaften verleihen dem Prion die Fähigkeit sich durch Autokatalyse von einem Wildtypprotein zum Prionenprotein umzuwandeln
-Es ist im kontraktilen Apparat der Muskelzellen zu finden aber auch in anderen Zellen wo es am Kontraktionsmechanismus beteiligt ist Das am häufigsten in der Biosphäre vorkommende Kohlenhydrat ist unbestritten die Cellulose Dieses Ereignis kann spontan oder durch die Aufnahme eines anderen Prions erfolgen
-Sie ist ein lineares Polymer aus β-D-Glucose und liegt hauptsächlich extrazellulär vor Die Ausbildung amyloider Fasern und der infektiöse Charakter sind eng miteinander verknüpft
-Dieses Molekül wird durch membranständige Cellulose-Synthasekomplexe synthetisiert die in der Membran zirkulieren und in gewisser Weise die Cellulose-Mikrofibrillen weben die die extrazelluläre Matrix der Pflanzenzellen ausmachen Der Begriff Amyloid ist allgemein gehalten und umfasst Proteinaggregate die auf eine besondere physikalisch-chemische Weise angeordnet sind
+Motormoleküle sind Enzyme welche die Energie aus der Hydrolyse von ATP in mechanische Energie umwandeln
+Dabei induzieren sie eine Konformationsänderung die einen Transport auf den Gleisen ermöglicht
+Die Gleise können Mikrotubuli oder Aktinfilamente sein
+Aktinbindende Motorproteine sind die Myosine von denen in Eukaryoten siebzehn Familien vorkommen
+Eine schwere Kette ist an der Ausbildung einer Schwanz- und einer Kopfregion beteiligt welche die Motordomäne bildet
+Der Kopf besitzt eine Aktin- und eine ATP-Bindungsstelle
+Im Übergangsbereich von Kopf zu Schwanz können unterschiedliche leichte Ketten binden und auf diese Weise an der Regulation von Myosin mitwirken
+In den nicht muskulären Zellen beispielsweise registriert eine Calmodulinkette die Anwesenheit von Calciumionen und ermöglicht die Bindung von Myosin an Aktin
+Je nach Klasse kann der Schwanz an Vesikel anlagern um sie entlang des Aktinfilaments zu ziehen
+Alle Myosine bis auf Myosin VI bewegen sich zum +Ende des Aktinfilaments
+Myosin II ist ein Dimer es hat zwei Köpfe und kann mit seinem Schwanz an ein bipolares Filament binden
+Es ist im kontraktilen Apparat der Muskelzellen zu finden aber auch in anderen Zellen wo es am Kontraktionsmechanismus beteiligt ist
+Eine chlorophyllhaltige Parenchymzelle in einem Angiospermenblatt exportiert organisches Material in Form von Saccharose aus der Zelle und versorgt damit selbst in der Nacht alle chlorophyllfreien Zellen der Pflanze
+Das Prinzip ist einfach
+Am Tag speichert der Chloroplast die gebildete und überschüssige Glucose aus der Photosynthese als Stärke
+in der Nacht kommt es zu einer Stoffentnahme aus diesem Speicher
+Die Zelle kann auf diese Weise Tag und Nacht einen Export gewährleisten
+Saccharose ist ein Dimer und wirkt nicht reduzierend sie wird in der Pflanze vor allem als leicht verfügbarer Speicherstoff verwendet
+Stärke ist ein großes Polymer aus Glucose wirkt ebenfalls nicht reduzierend und ist hauptsächlich in Speicherorganen zu finden
+Das am häufigsten in der Biosphäre vorkommende Kohlenhydrat ist unbestritten die Cellulose
+Sie ist ein lineares Polymer aus β-D-Glucose und liegt hauptsächlich extrazellulär vor
+Dieses Molekül wird durch membranständige Cellulose-Synthasekomplexe synthetisiert die in der Membran zirkulieren und in gewisser Weise die Cellulose-Mikrofibrillen weben die die extrazelluläre Matrix der Pflanzenzellen ausmachen
+Ein Prion ist ein infektiöses Protein das von einem endogenen zellulären Protein abstammt und dessen Primärstruktur besitzt sich aber in Sekundär- Tertiär- und Quartärstrukturen von diesem unterscheidet
+Seine strukturellen Eigenschaften verleihen dem Prion die Fähigkeit sich durch Autokatalyse von einem Wildtypprotein zum Prionenprotein umzuwandeln
+Dieses Ereignis kann spontan oder durch die Aufnahme eines anderen Prions erfolgen
+Die Ausbildung amyloider Fasern und der infektiöse Charakter sind eng miteinander verknüpft
+Der Begriff Amyloid ist allgemein gehalten und umfasst Proteinaggregate die auf eine besondere physikalisch-chemische Weise angeordnet sind
 eine Fadenform in der zum Großteil β-Faltblattstrukturen zu finden sind und in der eine Doppelbrechung von polarisiertem Licht nach Färbung mit Kongorot auftritt
 Das Prion bringt keine genetische Veränderung mit sich denn das verantwortliche Gen führt weiterhin zur Expression von Proteinen mit normaler Primärstruktur
 Die Prionenform vermehrt sich somit über die Umwandlung vom Wildtypprotein zum amyloiden Typ
 Eine Deletion des codierenden Gens des zellulären Proteins würde somit eine Prioneninfektion verhindern
+Ein Zyklotron besteht aus einer flachen zylindrischen Vakuumkammer zwischen den Polen eines Elektromagneten der ein Feld in z-Richtung erzeugt
+Die Kammer ist in zwei D-förmige Hälften aufgeteilt zwischen denen eine Hochfrequenzspannung anliegt
+Die von der Ionenquelle im Spalt zwischen den Kammern im Zentrum der Anordnung emittierten positiven Ionen werden auf die negative Kammerhälfte zu beschleunigt
+Da im Inneren der Kammerhälften mit metallischen Wänden kein elektrisches Feld existiert beschreiben die Ionen hier im Magnetfeld einen Halbkreis in der x-y-Ebene dessen Radius durch die als Zentripetalkraft wirkende Lorentzkraft festgelegt und dessen Umlaufszeit unabhängig vom Radius ist
+Wird die Hochfrequenz nun genau so gewählt dass die Ionen nach Durchlaufen des Halbkreises immer zu einem Zeitpunkt wieder am Spalt ankommen bei dem die richtige Polarität der Beschleunigungsspannung anliegt nimmt ihre kinetische Energie bei Durchlaufen des Spaltes zu ihre Geschwindigkeit wächst und daher auch der Radius des nächsten Halbkreises
+Die Ionen durchlaufen deshalb eine spiralartige Bahn die aus lauter Halbkreisen mit wachsenden Radien besteht bis sie den Rand des Magnetfeldes erreicht haben und dort durch ein elektrisches Ablenkfeld extrahiert werden können
+Wenn ein ruhendes Atom ein Photon absorbiert so nimmt es bei der Absorption den Photonenimpuls auf und erfährt deshalb einen Rückstoßimpuls der zu einer kinetischen Rückstoßenergie führt
+Die Photonenenergie wird dabei zum einen als Rückstoßenergie und zum anderen als Anregungsenergie auf das Atom übertragen
+Die Frequenz der Anregung unterscheidet sich also von der des Photons um einen gewissen Betrag
+Auch bei der Emission eines Photons erfährt das Atom einen Rückstoß
+Die dabei erzeugte Rückstoßenergie fehlt dem emittierten Photon so dass dessen Wellenlänge ebenfalls von jener der Anregung verschieden ist
+Atome die sich nur in ihrem Impuls unterscheiden können also Photonen mit unterschiedlicher Frequenz absorbieren bzw. emittieren
+Befindet sich ein Atom in einem Kristallgitter überträgt sich der Rückstoß auf dieses und die Energie von absorbiertem und emittiertem Photon entsprechen in etwa der Anregungsenergie
+Dies wird in der Mößbauerspektroskopie benutzt um mit Hilfe der Dopplerverschiebung der Emissionslinien etwa Hyperfeinstrukturenaufspaltungen in einer Probe zu analysieren
+Photonische Kristalle sind räumlich periodische Anordnungen von dielektrischen Medien mit unterschiedlicher Dielektrizitätskonstante und damit unterschiedlichen Brechzahlen
+Man kann sie realisieren durch transparente Materialien in die periodische Strukturen z.B. dielektrische Mikrozylinder oder Kügelchen eingebaut sind deren Abstände in der Größenordnung der optischen Wellenlänge liegen
+Sie beeinflussen deshalb die Ausbreitung von Licht in diesen Materialien
+Fällt eine Lichtwelle auf diese Struktur so wird ein Teil der Wellenamplitude an den Grenzflächen der periodischen Struktur reflektiert
+Ist die Periode der Struktur ein π-vielfaches der Wellenlänge überlagern sich die reflektierten Anteile phasenrichtig und addieren sich deshalb
+Das Reflexionsvermögen des Kristalls wird erhöht
+Ist die Periode der Struktur ein ungeradzahlig π-vielfaches der halben Wellenlänge sind die Phasen der reflektierten Wellen gegeneinander verschoben und die reflektierten Anteile löschen sich teilweise oder ganz aus
 Der entscheidende Durchbruch zur Aufstellung eines Ordnungsschemas gelang dem Quarkmodell das die Vielzahl der bisher gefundenen als Elementarteilchen angenommenen Teilchen als Systeme mit innerer Struktur ansieht die aus wenigen noch elementareren Teilchen zusammengesetzt sind
 Trägt man die bisher bekannten Hadronen in einem Diagramm ein in dem ihre Masse als Ordinate und ihr Spin als Abszisse gewählt wird so fällt auf dass es bestimmte Gruppen gibt in denen die Teilchen in diesem Diagramm eng benachbart sind d.h. gleichen Spin gleiche Parität und fast gleiche Masse haben
-Wenn ein ruhendes Atom ein Photon absorbiert so nimmt es bei der Absorption den Photonenimpuls auf und erfährt deshalb einen Rückstoßimpuls der zu einer kinetischen Rückstoßenergie führt Photonische Kristalle sind räumlich periodische Anordnungen von dielektrischen Medien mit unterschiedlicher Dielektrizitätskonstante und damit unterschiedlichen Brechzahlen Dies brachte Murray Gell-Mann und George Zweig unabhängig voneinander auf die Idee dass Hadronen aus wenigen elementareren Teilchen zusammengesetzt sein sollten
-Die Photonenenergie wird dabei zum einen als Rückstoßenergie und zum anderen als Anregungsenergie auf das Atom übertragen Man kann sie realisieren durch transparente Materialien in die periodische Strukturen z.B. dielektrische Mikrozylinder oder Kügelchen eingebaut sind deren Abstände in der Größenordnung der optischen Wellenlänge liegen Diese Idee wurde unterstützt durch das anomale magnetische Moment des Neutrons das als neutrales Teilchen eigentlich kein magnetisches Moment haben sollte außer wenn es aus geladenen Teilchen zusammengesetzt ist deren Ladungen sich zu 0 kompensieren
-Die Frequenz der Anregung unterscheidet sich also von der des Photons um einen gewissen Betrag Sie beeinflussen deshalb die Ausbreitung von Licht in diesen Materialien Außerdem wurde bei der Streuung von hochenergetischen Elektronen und Protonen an Protonen und Neutronen gefunden dass beide Nukleonen viele Anregungszustände haben
-Auch bei der Emission eines Photons erfährt das Atom einen Rückstoß Fällt eine Lichtwelle auf diese Struktur so wird ein Teil der Wellenamplitude an den Grenzflächen der periodischen Struktur reflektiert Sie können deshalb keine elementaren Teilchen sein sondern müssen aus wirklich elementaren Teilchen bestehen
-Die dabei erzeugte Rückstoßenergie fehlt dem emittierten Photon so dass dessen Wellenlänge ebenfalls von jener der Anregung verschieden ist Ist die Periode der Struktur ein π-vielfaches der Wellenlänge überlagern sich die reflektierten Anteile phasenrichtig und addieren sich deshalb Das Ziel der holografischen Interferometrie ist es Veränderungen an Objekten durch Belastungen thermische Ausdehnung Schwingungen usw. qualitativ und quantitativ zu erfassen
-Atome die sich nur in ihrem Impuls unterscheiden können also Photonen mit unterschiedlicher Frequenz absorbieren bzw. emittieren Das Reflexionsvermögen des Kristalls wird erhöht Beim Echtzeitverfahren der holografischen Interferometrie wird von einem Objekt in Ruhe ein Hologramm aufgenommen
-Befindet sich ein Atom in einem Kristallgitter überträgt sich der Rückstoß auf dieses und die Energie von absorbiertem und emittiertem Photon entsprechen in etwa der Anregungsenergie Ist die Periode der Struktur ein ungeradzahlig π-vielfaches der halben Wellenlänge sind die Phasen der reflektierten Wellen gegeneinander verschoben und die reflektierten Anteile löschen sich teilweise oder ganz aus Die Hologrammplatte wird dann ohne sie zu bewegen am festen Ort der Aufnahme entwickelt und mit der Referenzwelle beleuchtet sodass ein Hologrammbild erzeugt wird
-Dies wird in der Mößbauerspektroskopie benutzt um mit Hilfe der Dopplerverschiebung der Emissionslinien etwa Hyperfeinstrukturenaufspaltungen in einer Probe zu analysieren Nimmt man am Objekt nur sehr kleine Änderungen vor und beleuchtet es am gleichen Ort wieder genau wie bei der ersten Aufnahme so werden sich diese Änderungen in Phasenverschiebungen der Signalwelle äußern
+Dies brachte Murray Gell-Mann und George Zweig unabhängig voneinander auf die Idee dass Hadronen aus wenigen elementareren Teilchen zusammengesetzt sein sollten
+Diese Idee wurde unterstützt durch das anomale magnetische Moment des Neutrons das als neutrales Teilchen eigentlich kein magnetisches Moment haben sollte außer wenn es aus geladenen Teilchen zusammengesetzt ist deren Ladungen sich zu 0 kompensieren
+Außerdem wurde bei der Streuung von hochenergetischen Elektronen und Protonen an Protonen und Neutronen gefunden dass beide Nukleonen viele Anregungszustände haben
+Sie können deshalb keine elementaren Teilchen sein sondern müssen aus wirklich elementaren Teilchen bestehen
+Das Ziel der holografischen Interferometrie ist es Veränderungen an Objekten durch Belastungen thermische Ausdehnung Schwingungen usw. qualitativ und quantitativ zu erfassen
+Beim Echtzeitverfahren der holografischen Interferometrie wird von einem Objekt in Ruhe ein Hologramm aufgenommen
+Die Hologrammplatte wird dann ohne sie zu bewegen am festen Ort der Aufnahme entwickelt und mit der Referenzwelle beleuchtet sodass ein Hologrammbild erzeugt wird
+Nimmt man am Objekt nur sehr kleine Änderungen vor und beleuchtet es am gleichen Ort wieder genau wie bei der ersten Aufnahme so werden sich diese Änderungen in Phasenverschiebungen der Signalwelle äußern
 Die Überlagerung dieser Signalwelle vom veränderten Objekt mit der Rekonstruktionswelle vom Hologramm des unveränderten Objektes führt zu Interferenzstrukturen im holografischen Bild die nur für diejenigen Teile des Objektes auftreten die sich verändert haben
 Auf diese Weise kann man Gestaltsänderungen feststellen die wesentlich kleiner als eine Wellenlänge des beleuchtenden Lichtes sind
 Durch Einführen der effektiven Masse können Elektronen im Leitungsband und Löcher im Valenzband eines Kristalles wie freie Teilchen aufgefasst werden und bewegen sich am Energieminimum im Leitungsband und am Energiemaximum im Valenzband auf Parabeln
