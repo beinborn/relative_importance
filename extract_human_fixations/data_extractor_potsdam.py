@@ -79,12 +79,12 @@ class PotsdamDataNormalizer:
 
     def read_files(self):
         LOGGER.info(f"Reading files for task {self.task}")
-        for file in sorted(os.listdir(self.dir)):
+        for file in sorted(os.listdir(self.dir + "raw")):
             if not file.endswith(".txt"):
                 continue
             frag = file.split("_")[1]
             subj = file.split("_")[0]
-            fpath = os.path.join(self.dir, file)
+            fpath = os.path.join(self.dir + "raw", file)
             self.add_file(fpath, frag, subj)
 
     def add_file(self, fpath, frag, subj):
@@ -124,23 +124,31 @@ class PotsdamDataNormalizer:
 
         for subj in self.subjs:
             csv_data = []
-            for frag in self.frags:
+            sentence_idx_counter = 0
+            for idx, frag in enumerate(self.frags):
                 flt_file = pd.read_csv(self.files[frag][subj][0], sep="\t", header=0)
                 tfd = flt_file["TFT"].tolist()
-
-                normalized_tfd =  [float(item)/sum(tfd) for item in tfd]
                 words = self.frags_words[frag]
-                for word_idx, zipped in enumerate(zip(normalized_tfd, words)):
+
+                max_sent = flt_file['SentenceIndex'].max()
+                for word_idx in range(len(words)):
                     word_row = flt_file.iloc[word_idx]
+                    word = word_row['WORD']
                     sentence_idx = word_row['SentenceIndex']
+                    all_sentence_idx = sentence_idx_counter + sentence_idx
                     word_idx = word_row['WordIndexInSentence']
                     trt = word_row['FPRT'] + word_row['RRT']
-                    relfix, word = zipped
-                    row = [sentence_idx, word_idx, word, trt, relfix]
+                    tft = word_row['TFT']
+                    tft_sum = flt_file[flt_file['SentenceIndex'] == sentence_idx]['TFT'].sum()
+                    rel_tft = tft / tft_sum
+                    row = [all_sentence_idx, word_idx, word, trt, rel_tft]
                     csv_data.append(row)
-            Path("potsdam").mkdir(parents=True, exist_ok=True)
+
+                sentence_idx_counter += max_sent
+
+            Path(self.dir+"relfix").mkdir(parents=True, exist_ok=True)
             output_df = pd.DataFrame(data=csv_data, columns=['sentence_id', 'word_id', 'word', 'TRT', 'relFix'])
-            output_df.to_csv(self.task+'/'+subj+'-relfix-feats.csv')
+            output_df.to_csv(self.dir+"relfix/"+subj+'-relfix-feats.csv')
 
 
 def extract_features(dirs):
@@ -165,7 +173,6 @@ def extract_features(dirs):
                     else:
                         sent_dict[" ".join(map(str, list(sent_data['word'])))][1].append(relfix_vals)
                 i += 1
-
     # average feature values for all subjects
     averaged_dict = {}
     for sent, features in sent_dict.items():
@@ -173,7 +180,6 @@ def extract_features(dirs):
         if len(features[0]) > 1:
             averaged_dict[sent] = [features[0], avg_rel_fix]
     print(len(averaged_dict), " total sentences.")
-
     out_file_text = open("results/potsdam_sentences.txt", "w")
     out_file_relFix = open("results/potsdam_relfix_averages.txt", "w")
     for sent, feat in averaged_dict.items():
@@ -189,4 +195,4 @@ if __name__ == "__main__":
     normalizer.read_subjs()
     normalizer.read_words()
     normalizer.calc_features()
-    extract_features(['potsdam/'])
+    extract_features(['extract_human_fixations/data/potsdam/relfix/'])
