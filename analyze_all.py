@@ -105,7 +105,8 @@ corpora_modelpaths = {
     'potsdam': [
         'dbmdz/bert-base-german-uncased',
         'distilbert-base-german-cased'
-    ]
+    ],
+    'russsent': ['DeepPavlov/rubert-base-cased', 'bert-base-multilingual-cased']
 }
 types = ["saliency", "attention"]
 

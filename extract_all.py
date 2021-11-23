@@ -44,7 +44,8 @@ corpora_modelpaths = {
     'potsdam': [
         'dbmdz/bert-base-german-uncased',
         'distilbert-base-german-cased'
-    ]
+    ],
+    'russsent': ['DeepPavlov/rubert-base-cased', 'bert-base-multilingual-cased']
 }
 
 for corpus, modelpaths in corpora_modelpaths.items():
