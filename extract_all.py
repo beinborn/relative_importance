@@ -62,6 +62,10 @@ for corpus, modelpaths in corpora_modelpaths.items():
             model = TFBertForMaskedLM.from_pretrained(mp, output_attentions=True)
             tokenizer = BertTokenizer.from_pretrained(mp)
             embeddings = model.bert.embeddings.word_embeddings
+        if modelname.startswith('rubert'):
+            model = TFBertForMaskedLM.from_pretrained(mp, output_attentions=True, from_pt=True)
+            tokenizer = BertTokenizer.from_pretrained(mp)
+            embeddings = model.bert.embeddings.word_embeddings
         if modelname.startswith("albert"):
             model = TFAlbertForMaskedLM.from_pretrained(mp, output_attentions=True)
             tokenizer = AlbertTokenizer.from_pretrained(mp)
@@ -75,7 +79,7 @@ for corpus, modelpaths in corpora_modelpaths.items():
         outfile = "results/" + corpus + "_" + modelname + "_"
 
         # print("Extracting attention for " + modelname)
-        # extract_all_attention(model, tokenizer, sentences, outfile+ "attention.txt")
+        extract_all_attention(model, tokenizer, sentences, outfile+ "attention.txt")
 
         # Note: Saliency calculation takes much longer than attention calculation.
         print("Extracting saliency for " + modelname)
