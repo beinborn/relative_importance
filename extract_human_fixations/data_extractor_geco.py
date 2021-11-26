@@ -1,14 +1,15 @@
+import argparse
 import os
 import pandas as pd
 import numpy as np
 
 # Extract relative fixation duration from the English part of the GECO corpus
 
-def read_geco_file(filename):
-    print("Reading file for GECO: ", filename)
+def read_geco_file(reading_data_fn, sentence_info_fn, task):
+    print("Reading file for GECO: ", reading_data_fn)
 
-    data = pd.read_excel(filename, usecols="A,E,F,I,J,K,BB", na_filter=False)
-    sentence_info = pd.read_csv("data/geco/EnglishMaterial_corrected.csv", na_filter=False)
+    data = pd.read_excel(reading_data_fn, usecols="A,E,F,I,J,K,BB", na_filter=False, engine='openpyxl')
+    sentence_info = pd.read_csv(sentence_info_fn, na_filter=False)
     subjects = pd.unique(data['PP_NR'].values)
     sentences = pd.unique(sentence_info['SENTENCE_ID'].values)
 
@@ -45,11 +46,11 @@ def read_geco_file(filename):
                 print(sent_data)
             i += 1
         # write CSV files for each subject
-        df_subj.to_csv("data/geco/"+subj+"-relfix-feats.csv")
+        df_subj.to_csv("../results/"+task+"/"+subj+"-relfix-feats.csv")
 
     print("ALL DONE.")
 
-def extract_features(dirs):
+def extract_features(task):
 
     # join results from all subjects
     sent_dict ={}
@@ -79,9 +80,8 @@ def extract_features(dirs):
         if len(features[0]) > 1:
             averaged_dict[sent] = [features[0], avg_rel_fix]
     print(len(averaged_dict), " total sentences.")
-
-    out_file_text = open("../results/geco_sentences.txt", "w")
-    out_file_relFix = open("../results/geco_relfix_averages.txt", "w")
+    out_file_text = open("../results/" + task + "_sentences.txt", "w")
+    out_file_relFix = open("../results/" + task + "_relfix_averages.txt", "w")
     for sent, feat in averaged_dict.items():
         print(sent,file=out_file_text)
         print(", ".join(map(str,feat[1])),file=out_file_relFix)
@@ -89,9 +89,23 @@ def extract_features(dirs):
 
 def main():
     # Make sure that this is available
-    filename = "data/geco/MonolingualReadingData.xlsx"
-    read_geco_file(filename)
-    extract_features(["geco/"])
+    desc = "Extract relative fixation duration data from the GECO Corpus"
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument('-l', '--language', help="English (en) or Dutch (nl)", default='en')
+    args = parser.parse_args()
+    lang = args.language
+    if lang == 'en':
+        reading_data_fn = "data/geco/MonolingualReadingData.xlsx"
+        sentence_info_fn = "data/geco/EnglishMaterial_corrected.csv"
+        task =  "geco"
+    elif lang == 'nl':
+        reading_data_fn = "data/geco_nl/L1ReadingData.xlsx"
+        sentence_info_fn = "data/geco_nl/DutchMaterials.xlsx"
+        task =  "geco_nl"
+    else:
+        raise ValueError("Language '" + lang + "' is not supported.")
+    read_geco_file(reading_data_fn, sentence_info_fn, task)
+    extract_features(task)
 
 if __name__ == "__main__":
     main()
