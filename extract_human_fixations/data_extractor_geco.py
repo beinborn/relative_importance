@@ -5,22 +5,18 @@ import numpy as np
 
 # Extract relative fixation duration from the English part of the GECO corpus
 
-def read_geco_file(reading_data_fn, sentence_info_fn, task):
-    print("Reading file for GECO: ", reading_data_fn)
-
-    data = pd.read_excel(reading_data_fn, usecols="A,E,F,I,J,K,BB", na_filter=False, engine='openpyxl')
-    sentence_info = pd.read_csv(sentence_info_fn, na_filter=False)
-    subjects = pd.unique(data['PP_NR'].values)
-    sentences = pd.unique(sentence_info['SENTENCE_ID'].values)
+def read_geco_file(reading_data_df, sentence_info_df, task):
+    subjects = pd.unique(reading_data_df['PP_NR'].values)
+    sentences = pd.unique(sentence_info_df['SENTENCE_ID'].values)
 
     flat_word_index = 0
     for subj in subjects:
         print(subj)
-        subj_data_orig = data.loc[data['PP_NR'] == subj]
+        subj_data_orig = reading_data_df.loc[reading_data_df['PP_NR'] == subj]
         df_subj = pd.DataFrame(columns=['sentence_id','word_id','word_id_orig','word','TRT','relFix'])
         for j, sent in enumerate(sentences):
-            word_ids = sentence_info["WORD_ID"].loc[sentence_info['SENTENCE_ID'] == sent].values
-            tokens = sentence_info["WORD"].loc[sentence_info['SENTENCE_ID'] == sent].values
+            word_ids = sentence_info_df["WORD_ID"].loc[sentence_info_df['SENTENCE_ID'] == sent].values
+            tokens = sentence_info_df["WORD"].loc[sentence_info_df['SENTENCE_ID'] == sent].values
 
             for k, (w, id) in enumerate(zip(tokens, word_ids)):
                 trt = subj_data_orig['WORD_TOTAL_READING_TIME'].loc[subj_data_orig['WORD_ID'] == id].values
@@ -96,15 +92,27 @@ def main():
     lang = args.language
     if lang == 'en':
         reading_data_fn = "data/geco/MonolingualReadingData.xlsx"
+        print("Reading file for GECO: ", reading_data_fn)
+        reading_data_df = pd.read_excel(reading_data_fn, usecols="A,E,F,I,J,K,BB",
+                                        na_filter=False, engine='openpyxl')
         sentence_info_fn = "data/geco/EnglishMaterial_corrected.csv"
+        print("Reading file for GECO: ", sentence_info_fn)
+        sentence_info_df = pd.read_csv(sentence_info_fn, na_filter=False)
         task =  "geco"
     elif lang == 'nl':
         reading_data_fn = "data/geco_nl/L1ReadingData.xlsx"
+        print("Reading file for GECO: ", reading_data_fn)
+        reading_data_df = pd.read_excel(reading_data_fn, na_filter=False,
+                                        usecols="A,E,F,I,J,K,BB", engine='openpyxl')
         sentence_info_fn = "data/geco_nl/DutchMaterials.xlsx"
+        print("Reading file for GECO: ", sentence_info_fn)
+        sentence_info_df = pd.read_excel(sentence_info_fn, na_filter=False,
+                                         engine='openpyxl')
+        sentence_info_df.rename({'IA_ID':'WORD_ID'}, axis='columns', inplace=True)
         task =  "geco_nl"
     else:
         raise ValueError("Language '" + lang + "' is not supported.")
-    read_geco_file(reading_data_fn, sentence_info_fn, task)
+    read_geco_file(reading_data_df, sentence_info_df, task)
     extract_features(task)
 
 if __name__ == "__main__":
