@@ -50,24 +50,24 @@ def extract_features(task):
 
     # join results from all subjects
     sent_dict ={}
-    for dir in dirs:
-        for file in sorted(os.listdir(dir)):
-            print("Reading files for subj ", file)
-            subj_data = pd.read_csv(dir+file, delimiter=',')
-            max_sent = subj_data['sentence_id'].max()
-            print(max_sent, " sentences")
+    relfix_dir = "data/" + task + "/relfix/"
+    for file in sorted(os.listdir(relfix_dir)):
+        print("Reading files for subj ", file)
+        subj_data = pd.read_csv(dir+file, delimiter=',')
+        max_sent = subj_data['sentence_id'].max()
+        print(max_sent, " sentences")
 
-            # join words in sentences
-            i = 0
-            while i < max_sent:
-                sent_data = subj_data.loc[subj_data['sentence_id'] == i]
-                if " ".join(map(str, list(sent_data['word']))):
-                    relfix_vals = list(sent_data['relFix'])
-                    if " ".join(map(str, list(sent_data['word']))) not in sent_dict:
-                        sent_dict[" ".join(map(str, list(sent_data['word'])))] = [list(sent_data['word']), [relfix_vals]]
-                    else:
-                        sent_dict[" ".join(map(str, list(sent_data['word'])))][1].append(relfix_vals)
-                i += 1
+        # join words in sentences
+        i = 0
+        while i < max_sent:
+            sent_data = subj_data.loc[subj_data['sentence_id'] == i]
+            if " ".join(map(str, list(sent_data['word']))):
+                relfix_vals = list(sent_data['relFix'])
+                if " ".join(map(str, list(sent_data['word']))) not in sent_dict:
+                    sent_dict[" ".join(map(str, list(sent_data['word'])))] = [list(sent_data['word']), [relfix_vals]]
+                else:
+                    sent_dict[" ".join(map(str, list(sent_data['word'])))][1].append(relfix_vals)
+            i += 1
 
     # average feature values for all subjects
     averaged_dict = {}
