@@ -42,7 +42,7 @@ def read_geco_file(reading_data_df, sentence_info_df, task):
                 print(sent_data)
             i += 1
         # write CSV files for each subject
-        df_subj.to_csv("../results/"+task+"/"+subj+"-relfix-feats.csv")
+        df_subj.to_csv("data/"+task+"/"+subj+"-relfix-feats.csv")
 
     print("ALL DONE.")
 
