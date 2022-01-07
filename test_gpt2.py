@@ -1,5 +1,5 @@
 # In this file, we have been testing to do the analyses also with GPT-2.
-# We are not yet convinced that it works correctly and did not include it to the paper. 
+# We are not yet convinced that it works correctly and did not include it to the paper.
 
 
 from transformers import TFGPT2LMHeadModel, GPT2Tokenizer
