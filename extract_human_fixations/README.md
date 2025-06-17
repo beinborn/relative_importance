@@ -1,4 +1,4 @@
-Download the **GECO** corpus from [https://expsy.ugent.be/downloads/geco/]()
+Download the **GECO** corpus from [https://expsy.ugent.be/downloads/geco/](https://expsy.ugent.be/downloads/geco/)
 and place the file "MonolingualReadingData.xlsx" in data/geco. 
 
 The published version of GECO contains an alignment error which we manually corrected in the file geco/EnglishMaterial_corrected.csv: 
